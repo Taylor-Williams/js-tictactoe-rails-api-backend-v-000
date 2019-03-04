@@ -5,14 +5,15 @@ class GamesController < ApplicationController
     render json: @game, status: 201
   end
   def show
-    @game = Game.find(params[:id])
     render json: @game
   end
   def update
-
+    @game.update(game_params)
+    render json: @game
   end
   def index
-
+    games = Game.all
+    render json: games
   end
   private
   def game_params
